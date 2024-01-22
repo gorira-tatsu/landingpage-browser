@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StartPage</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="random-quote">
+        <h1>{{ randomQuote }}</h1>
+    </div>
+
+    <!-- Search Container -->
+    <div id="search-container">
+        <input type="text" v-model="searchQuery" @keydown.enter="search" id="search-bar" placeholder="Search Google">
+    </div>
+
+    <!-- Links Container -->
+    <div id="links-container">
+      <!-- Bookmark Shortcuts -->
+      <div v-for="bookmark in bookmarks" :key="bookmark.id" class="link" @click="openLink(bookmark.link)">
+        <i :class="bookmark.icon"></i>
+        <p>{{ bookmark.name }}</p>
+      </div>
+
+      <!-- Timezone Clocks -->
+      <div class="link">
+        <i class="fas fa-clock"></i>
+        <p>My Time: <span>{{ myTime }}</span></p>
+        <p>Her Time: <span>{{ herTime }}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vue.js -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <!-- External JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
